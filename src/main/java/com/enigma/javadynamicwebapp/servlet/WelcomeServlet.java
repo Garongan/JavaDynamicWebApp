@@ -30,6 +30,7 @@ public class WelcomeServlet extends HttpServlet {
         // session expired or no logged user
         if (userId == null || userId.isEmpty()) {
             response.sendRedirect("login");
+            return;
         }
 
         List<Student> students = service.getAllStudents();
