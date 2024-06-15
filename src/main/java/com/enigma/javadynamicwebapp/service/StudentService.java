@@ -7,5 +7,4 @@ import java.util.List;
 public interface StudentService {
     void initStudent();
     List<Student> getAllStudents();
-    String getStudentName(String id);
 }

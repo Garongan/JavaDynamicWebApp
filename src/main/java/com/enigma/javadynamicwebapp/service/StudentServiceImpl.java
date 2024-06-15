@@ -4,7 +4,6 @@ import com.enigma.javadynamicwebapp.entity.Student;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class StudentServiceImpl implements StudentService {
     private final List<Student> students = new ArrayList<>();
@@ -24,15 +23,5 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> getAllStudents() {
         return students;
-    }
-
-    @Override
-    public String getStudentName(String id) {
-        Optional<Student> student = students.stream().filter(s -> s.getStudentID().equals(id))
-                .findAny();
-        if (student.isPresent()) {
-            return student.get().getStudentName();
-        }
-        return "";
     }
 }

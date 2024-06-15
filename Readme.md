@@ -1,5 +1,11 @@
 ## Java Jakarta EE Servlet and JSP
 
+### to login can use this user id and password
+```bash
+user id = id_123
+password = pass123
+```
+
 ### run locally
 
 - clone this project
