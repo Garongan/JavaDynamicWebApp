@@ -1,6 +1,8 @@
 <%@ page import="com.enigma.javadynamicwebapp.entity.Student" %>
 <%@ page import="java.util.*" %>
-  Created by IntelliJ IDEA.
+<%@ page import="java.text.DecimalFormat" %>
+<%--
+Created by IntelliJ IDEA.
   User: alvindo
   Date: 15/06/24
   Time: 12.26
@@ -46,8 +48,9 @@
                     int rowSpanLength = entry.getValue().size();
                     int subTotalPass = entry.getValue().stream()
                             .map(Student::getMark)
-                            .reduce(0, Integer::sum);
-                    float totalPass = ((float) subTotalPass / rowSpanLength);
+                            .filter(mark -> mark > 40)
+                            .toList().size();
+                    float totalPass = ((float) subTotalPass / rowSpanLength) * 100;
                     List<Student> students = entry.getValue();
                     boolean isCalledOnce = true;
             %>
@@ -67,7 +70,7 @@
                 </td>
                 <% if (isCalledOnce) { %>
                 <td rowspan=<%= rowSpanLength%>>
-                    <%= totalPass%>
+                    <%= new DecimalFormat("##.##").format(totalPass)%>
                 </td>
                 <%isCalledOnce = false; } %>
             </tr>
